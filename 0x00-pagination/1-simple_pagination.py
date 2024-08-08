@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-This module contains the `index_range` function, which takes two integer arguments
+Module contains the `index_range` function, which takes two integer arguments
 `page` and `page_size` and returns a tuple of size two containing a start index
 and an end index corresponding to the range of indexes to return in a list for
 those particular pagination parameters.
@@ -9,6 +9,7 @@ those particular pagination parameters.
 import csv
 import math
 from typing import List, Tuple
+
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
@@ -50,16 +51,16 @@ class Server:
 
         Args:
             page (int, optional): The page number (1-indexed). Defaults to 1.
-            page_size (int, optional): The number of items per page. Defaults to 10.
+            page_size: The number of items per page. Defaults to 10.
 
         Raises:
-            AssertionError: If `page` or `page_size` are not integers greater than 0.
+            AssertionError
 
         Returns:
             List[List]: The appropriate page of the dataset.
         """
-        assert isinstance(page, int) and page > 0, "page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0, "page_size must be a positive integer"
+        assert isinstance(page, int) and page > 0, "page must be positive"
+        assert isinstance(page_size, int) and page_size > 0, "bad page_size"
 
         dataset = self.dataset()
         start_index, end_index = index_range(page, page_size)
